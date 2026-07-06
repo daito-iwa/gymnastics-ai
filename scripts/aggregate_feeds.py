@@ -85,6 +85,15 @@ def parse_atom(root, source):
             out.append((title, link, date, img))
     return out
 
+def title_passes(title, keywords):
+    """総合フィードから体操記事だけ通す。keywords 未指定なら全通過。
+    タイトルにいずれかのキーワードを含めば採用（種目名は体操以外で出ないため安全。
+    「体操」はラジオ体操等の稀なノイズを許容）。"""
+    if not keywords:
+        return True
+    return any(k in title for k in keywords)
+
+
 def main():
     sources = json.load(open("sources.json"))
     items, errors = [], []
@@ -97,7 +106,8 @@ def main():
             root = ET.fromstring(raw)
             tag = root.tag.lower()
             rows = parse_atom(root, src) if tag.endswith("feed") else parse_rss(root, src)
-            rows = rows[:PER_SOURCE_CAP]
+            kw = src.get("filter")
+            rows = [r for r in rows if title_passes(r[0], kw)][:PER_SOURCE_CAP]
             for title, link, date, img in rows:
                 items.append({
                     "title": title[:300],

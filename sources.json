@@ -1,38 +1,405 @@
 [
-  {"id":"gymternet","name":"The Gymternet","url":"https://thegymter.net","feed":"https://thegymter.net/feed/","lang":"en","category":"core"},
-  {"id":"bbs","name":"The Balance Beam Situation","url":"https://balancebeamsituation.com","feed":"https://balancebeamsituation.com/feed/","lang":"en","category":"core"},
-  {"id":"gymcastic","name":"GymCastic","url":"https://gymcastic.com","feed":"https://gymcastic.com/feed/","lang":"en","category":"core"},
-  {"id":"giga","name":"GIGA","url":"https://gigaprogym.com","feed":"https://gigaprogym.com/giga-perspectives-rss-feed?format=rss","lang":"en","category":"core"},
-  {"id":"gymnastics_now","name":"Gymnastics Now","url":"https://gymnastics-now.com","feed":"https://gymnastics-now.com/feed/","lang":"en","category":"core"},
-  {"id":"cgn","name":"College Gym News","url":"https://collegegymnews.com","feed":"https://collegegymnews.com/feed/","lang":"en","category":"core"},
-  {"id":"intl_gymnast","name":"International Gymnast","url":"https://www.intlgymnast.com","feed":"https://www.intlgymnast.com/feed/","lang":"en","category":"core"},
-  {"id":"flogymnastics","name":"FloGymnastics","url":"https://www.flogymnastics.com","feed":null,"lang":"en","category":"core"},
-  {"id":"inside_gym","name":"Inside Gymnastics","url":"https://www.insidegymnastics.com","feed":"https://www.insidegymnastics.com/feed/","lang":"en","category":"core"},
-  {"id":"couch_gymnast","name":"The Couch Gymnast","url":"https://thecouchgymnast.com","feed":"https://thecouchgymnast.com/index.xml","lang":"en","category":"core"},
-  {"id":"gymtruthteller","name":"Gymtruthteller","url":"https://gymtruthteller.wordpress.com","feed":"https://gymtruthteller.wordpress.com/feed/","lang":"en","category":"core"},
-  {"id":"neutral_deductions","name":"Neutral Deductions","url":"https://www.neutraldeductions.com","feed":"https://anchor.fm/s/ea68e74c/podcast/rss","lang":"en","category":"mag"},
-  {"id":"magnastics","name":"MAGnastics","url":"https://magnastics.wordpress.com","feed":"https://magnastics.wordpress.com/feed/","lang":"en","category":"mag"},
-  {"id":"zhoxxyy","name":"Zhoxxyy","url":"https://zhoxxyy.com","feed":"https://zhoxxyy.com/feed/","lang":"en","category":"mag"},
-  {"id":"medal_count","name":"The Medal Count","url":"https://themedalcount.com","feed":"https://themedalcount.com/feed/","lang":"en","category":"history"},
-  {"id":"gym_history","name":"Gymnastics History","url":"https://www.gymnastics-history.com","feed":"https://gymnastics-history.com/feed/","lang":"en","category":"history"},
-  {"id":"rrg","name":"Rewriting Russian Gymnastics","url":"https://rewritingrussiangymnastics.blogspot.com","feed":"https://rewritingrussiangymnastics.blogspot.com/feeds/posts/default","lang":"en","category":"history"},
-  {"id":"fangymnastics","name":"Fangymnastics","url":"https://fangymnastics.com","feed":"https://fangymnastics.com/feed/","lang":"en","category":"history"},
-  {"id":"chalkbucket","name":"ChalkBucket","url":"https://chalkbucket.com","feed":null,"lang":"en","category":"forum"},
-  {"id":"gymnaverse","name":"Gymnaverse","url":"https://gymnaverse.com","feed":null,"lang":"en","category":"forum"},
-  {"id":"gymcastic_forum","name":"GymCastic Forum","url":"https://gymcastic.com/community/","feed":"https://gymcastic.com/community/?type=rss2&forum=g","lang":"en","category":"forum"},
-  {"id":"cgb","name":"College Gymnastics Board","url":"https://www.tapatalk.com/groups/collegegymnasticsboard/","feed":null,"lang":"en","category":"forum"},
-  {"id":"reddit_gym","name":"Reddit r/Gymnastics","url":"https://www.reddit.com/r/Gymnastics/","feed":"https://www.reddit.com/r/Gymnastics/.rss","lang":"en","category":"forum"},
-  {"id":"gymnovosti","name":"Gymnovosti","url":"https://www.gymnovosti.com","feed":null,"lang":"ru","category":"intl"},
-  {"id":"sports_ru","name":"Sports.ru 体操","url":"https://www.sports.ru/gymnastics/","feed":"https://www.sports.ru/rss/rubric.xml?s=221","lang":"ru","category":"intl"},
-  {"id":"sport_express","name":"Sport-Express","url":"https://www.sport-express.ru","feed":null,"lang":"ru","category":"intl"},
-  {"id":"championat","name":"Championat","url":"https://www.championat.com","feed":null,"lang":"ru","category":"intl"},
-  {"id":"ria_sport","name":"RIA Novosti Sport","url":"https://rsport.ria.ru","feed":null,"lang":"ru","category":"intl"},
-  {"id":"rgf","name":"ロシア体操連盟","url":"https://sportgymrus.ru","feed":"https://sportgymrus.ru/feed/","lang":"ru","category":"intl"},
-  {"id":"fig","name":"FIG（国際体操連盟）","url":"https://www.gymnastics.sport","feed":null,"lang":"en","category":"official"},
-  {"id":"usagym","name":"USA Gymnastics","url":"https://usagym.org","feed":"https://usagym.org/feed/","lang":"en","category":"official"},
-  {"id":"eur_gym","name":"European Gymnastics","url":"https://www.europeangymnastics.com","feed":"https://backend.europeangymnastics.com/rss.xml","lang":"en","category":"official"},
-  {"id":"british_gym","name":"British Gymnastics","url":"https://www.british-gymnastics.org","feed":null,"lang":"en","category":"official"},
-  {"id":"jpn_gym","name":"日本体操協会","url":"https://www.jpn-gym.or.jp","feed":"https://www.jpn-gym.or.jp/news/feed/","lang":"ja","category":"official"},
-  {"id":"olympics","name":"Olympics.com","url":"https://olympics.com/en/sports/artistic-gymnastics","feed":null,"lang":"en","category":"official"},
-  {"id":"mso","name":"MeetScoresOnline","url":"https://www.meetscoresonline.com","feed":null,"lang":"en","category":"official"}
+ {
+  "id": "gymternet",
+  "name": "The Gymternet",
+  "url": "https://thegymter.net",
+  "feed": "https://thegymter.net/feed/",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "bbs",
+  "name": "The Balance Beam Situation",
+  "url": "https://balancebeamsituation.com",
+  "feed": "https://balancebeamsituation.com/feed/",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "gymcastic",
+  "name": "GymCastic",
+  "url": "https://gymcastic.com",
+  "feed": "https://gymcastic.com/feed/",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "giga",
+  "name": "GIGA",
+  "url": "https://gigaprogym.com",
+  "feed": "https://gigaprogym.com/giga-perspectives-rss-feed?format=rss",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "gymnastics_now",
+  "name": "Gymnastics Now",
+  "url": "https://gymnastics-now.com",
+  "feed": "https://gymnastics-now.com/feed/",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "cgn",
+  "name": "College Gym News",
+  "url": "https://collegegymnews.com",
+  "feed": "https://collegegymnews.com/feed/",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "intl_gymnast",
+  "name": "International Gymnast",
+  "url": "https://www.intlgymnast.com",
+  "feed": "https://www.intlgymnast.com/feed/",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "flogymnastics",
+  "name": "FloGymnastics",
+  "url": "https://www.flogymnastics.com",
+  "feed": null,
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "inside_gym",
+  "name": "Inside Gymnastics",
+  "url": "https://www.insidegymnastics.com",
+  "feed": "https://www.insidegymnastics.com/feed/",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "couch_gymnast",
+  "name": "The Couch Gymnast",
+  "url": "https://thecouchgymnast.com",
+  "feed": "https://thecouchgymnast.com/index.xml",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "gymtruthteller",
+  "name": "Gymtruthteller",
+  "url": "https://gymtruthteller.wordpress.com",
+  "feed": "https://gymtruthteller.wordpress.com/feed/",
+  "lang": "en",
+  "category": "core"
+ },
+ {
+  "id": "neutral_deductions",
+  "name": "Neutral Deductions",
+  "url": "https://www.neutraldeductions.com",
+  "feed": "https://anchor.fm/s/ea68e74c/podcast/rss",
+  "lang": "en",
+  "category": "mag"
+ },
+ {
+  "id": "magnastics",
+  "name": "MAGnastics",
+  "url": "https://magnastics.wordpress.com",
+  "feed": "https://magnastics.wordpress.com/feed/",
+  "lang": "en",
+  "category": "mag"
+ },
+ {
+  "id": "zhoxxyy",
+  "name": "Zhoxxyy",
+  "url": "https://zhoxxyy.com",
+  "feed": "https://zhoxxyy.com/feed/",
+  "lang": "en",
+  "category": "mag"
+ },
+ {
+  "id": "medal_count",
+  "name": "The Medal Count",
+  "url": "https://themedalcount.com",
+  "feed": "https://themedalcount.com/feed/",
+  "lang": "en",
+  "category": "history"
+ },
+ {
+  "id": "gym_history",
+  "name": "Gymnastics History",
+  "url": "https://www.gymnastics-history.com",
+  "feed": "https://gymnastics-history.com/feed/",
+  "lang": "en",
+  "category": "history"
+ },
+ {
+  "id": "rrg",
+  "name": "Rewriting Russian Gymnastics",
+  "url": "https://rewritingrussiangymnastics.blogspot.com",
+  "feed": "https://rewritingrussiangymnastics.blogspot.com/feeds/posts/default",
+  "lang": "en",
+  "category": "history"
+ },
+ {
+  "id": "fangymnastics",
+  "name": "Fangymnastics",
+  "url": "https://fangymnastics.com",
+  "feed": "https://fangymnastics.com/feed/",
+  "lang": "en",
+  "category": "history"
+ },
+ {
+  "id": "chalkbucket",
+  "name": "ChalkBucket",
+  "url": "https://chalkbucket.com",
+  "feed": null,
+  "lang": "en",
+  "category": "forum"
+ },
+ {
+  "id": "gymnaverse",
+  "name": "Gymnaverse",
+  "url": "https://gymnaverse.com",
+  "feed": null,
+  "lang": "en",
+  "category": "forum"
+ },
+ {
+  "id": "gymcastic_forum",
+  "name": "GymCastic Forum",
+  "url": "https://gymcastic.com/community/",
+  "feed": "https://gymcastic.com/community/?type=rss2&forum=g",
+  "lang": "en",
+  "category": "forum"
+ },
+ {
+  "id": "cgb",
+  "name": "College Gymnastics Board",
+  "url": "https://www.tapatalk.com/groups/collegegymnasticsboard/",
+  "feed": null,
+  "lang": "en",
+  "category": "forum"
+ },
+ {
+  "id": "reddit_gym",
+  "name": "Reddit r/Gymnastics",
+  "url": "https://www.reddit.com/r/Gymnastics/",
+  "feed": "https://www.reddit.com/r/Gymnastics/.rss",
+  "lang": "en",
+  "category": "forum"
+ },
+ {
+  "id": "gymnovosti",
+  "name": "Gymnovosti",
+  "url": "https://www.gymnovosti.com",
+  "feed": null,
+  "lang": "ru",
+  "category": "intl"
+ },
+ {
+  "id": "sports_ru",
+  "name": "Sports.ru 体操",
+  "url": "https://www.sports.ru/gymnastics/",
+  "feed": "https://www.sports.ru/rss/rubric.xml?s=221",
+  "lang": "ru",
+  "category": "intl"
+ },
+ {
+  "id": "sport_express",
+  "name": "Sport-Express",
+  "url": "https://www.sport-express.ru",
+  "feed": null,
+  "lang": "ru",
+  "category": "intl"
+ },
+ {
+  "id": "championat",
+  "name": "Championat",
+  "url": "https://www.championat.com",
+  "feed": null,
+  "lang": "ru",
+  "category": "intl"
+ },
+ {
+  "id": "ria_sport",
+  "name": "RIA Novosti Sport",
+  "url": "https://rsport.ria.ru",
+  "feed": null,
+  "lang": "ru",
+  "category": "intl"
+ },
+ {
+  "id": "rgf",
+  "name": "ロシア体操連盟",
+  "url": "https://sportgymrus.ru",
+  "feed": "https://sportgymrus.ru/feed/",
+  "lang": "ru",
+  "category": "intl"
+ },
+ {
+  "id": "fig",
+  "name": "FIG（国際体操連盟）",
+  "url": "https://www.gymnastics.sport",
+  "feed": null,
+  "lang": "en",
+  "category": "official"
+ },
+ {
+  "id": "usagym",
+  "name": "USA Gymnastics",
+  "url": "https://usagym.org",
+  "feed": "https://usagym.org/feed/",
+  "lang": "en",
+  "category": "official"
+ },
+ {
+  "id": "eur_gym",
+  "name": "European Gymnastics",
+  "url": "https://www.europeangymnastics.com",
+  "feed": "https://backend.europeangymnastics.com/rss.xml",
+  "lang": "en",
+  "category": "official"
+ },
+ {
+  "id": "british_gym",
+  "name": "British Gymnastics",
+  "url": "https://www.british-gymnastics.org",
+  "feed": null,
+  "lang": "en",
+  "category": "official"
+ },
+ {
+  "id": "jpn_gym",
+  "name": "日本体操協会",
+  "url": "https://www.jpn-gym.or.jp",
+  "feed": null,
+  "lang": "ja",
+  "category": "official"
+ },
+ {
+  "id": "olympics",
+  "name": "Olympics.com",
+  "url": "https://olympics.com/en/sports/artistic-gymnastics",
+  "feed": null,
+  "lang": "en",
+  "category": "official"
+ },
+ {
+  "id": "mso",
+  "name": "MeetScoresOnline",
+  "url": "https://www.meetscoresonline.com",
+  "feed": null,
+  "lang": "en",
+  "category": "official"
+ },
+ {
+  "id": "nhk_sports",
+  "name": "NHKニュース",
+  "url": "https://www3.nhk.or.jp/news/",
+  "feed": "https://www3.nhk.or.jp/rss/news/cat7.xml",
+  "lang": "ja",
+  "category": "jp",
+  "filter": [
+   "体操",
+   "新体操",
+   "跳馬",
+   "あん馬",
+   "つり輪",
+   "平行棒",
+   "鉄棒",
+   "橋本大輝",
+   "岡慎之助",
+   "萱和磨",
+   "谷川航",
+   "北園丈琉",
+   "杉本海誠"
+  ]
+ },
+ {
+  "id": "nikkan_olympic",
+  "name": "日刊スポーツ",
+  "url": "https://www.nikkansports.com/olympic/",
+  "feed": "https://www.nikkansports.com/olympic/atom.xml",
+  "lang": "ja",
+  "category": "jp",
+  "filter": [
+   "体操",
+   "新体操",
+   "跳馬",
+   "あん馬",
+   "つり輪",
+   "平行棒",
+   "鉄棒",
+   "橋本大輝",
+   "岡慎之助",
+   "萱和磨",
+   "谷川航",
+   "北園丈琉",
+   "杉本海誠"
+  ]
+ },
+ {
+  "id": "nikkan_sports",
+  "name": "日刊スポーツ",
+  "url": "https://www.nikkansports.com/sports/",
+  "feed": "https://www.nikkansports.com/sports/atom.xml",
+  "lang": "ja",
+  "category": "jp",
+  "filter": [
+   "体操",
+   "新体操",
+   "跳馬",
+   "あん馬",
+   "つり輪",
+   "平行棒",
+   "鉄棒",
+   "橋本大輝",
+   "岡慎之助",
+   "萱和磨",
+   "谷川航",
+   "北園丈琉",
+   "杉本海誠"
+  ]
+ },
+ {
+  "id": "mainichi_sports",
+  "name": "毎日新聞",
+  "url": "https://mainichi.jp/sports/",
+  "feed": "https://mainichi.jp/rss/etc/mainichi-sports.rss",
+  "lang": "ja",
+  "category": "jp",
+  "filter": [
+   "体操",
+   "新体操",
+   "跳馬",
+   "あん馬",
+   "つり輪",
+   "平行棒",
+   "鉄棒",
+   "橋本大輝",
+   "岡慎之助",
+   "萱和磨",
+   "谷川航",
+   "北園丈琉",
+   "杉本海誠"
+  ]
+ },
+ {
+  "id": "asahi_sports",
+  "name": "朝日新聞",
+  "url": "https://www.asahi.com/sports/",
+  "feed": "https://rss.asahi.com/rss/asahi/sports.rdf",
+  "lang": "ja",
+  "category": "jp",
+  "filter": [
+   "体操",
+   "新体操",
+   "跳馬",
+   "あん馬",
+   "つり輪",
+   "平行棒",
+   "鉄棒",
+   "橋本大輝",
+   "岡慎之助",
+   "萱和磨",
+   "谷川航",
+   "北園丈琉",
+   "杉本海誠"
+  ]
+ }
 ]
