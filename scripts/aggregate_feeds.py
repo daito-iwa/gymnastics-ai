@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+"""外部体操メディアのRSS/Atomを収集して external_feed.json を生成する。
+Gymnastics AI アプリの「メディア > 外部」タブが読む。
+sources.json のフィードを取得 → 最新順 → 上限300件。
+"""
+import json, time, hashlib
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
+import urllib.request
+import xml.etree.ElementTree as ET
+
+UA = "GymnasticsAI-FeedBot/1.0 (+https://daitoiwasaki.com/dscore)"
+MAX_ITEMS = 300
+PER_SOURCE_CAP = 25  # 1サイトが埋め尽くさないように
+TIMEOUT = 20
+
+NS = {
+    "atom": "http://www.w3.org/2005/Atom",
+    "media": "http://search.yahoo.com/mrss/",
+    "content": "http://purl.org/rss/1.0/modules/content/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+}
+
+def fetch(url):
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+        return r.read()
+
+def parse_date(s):
+    if not s:
+        return None
+    s = s.strip()
+    try:
+        return parsedate_to_datetime(s)
+    except Exception:
+        pass
+    for fmt in ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d"):
+        try:
+            dt = datetime.strptime(s.replace("Z", "+0000") if fmt.endswith("%z") else s, fmt)
+            return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+        except Exception:
+            continue
+    return None
+
+def text(el):
+    return (el.text or "").strip() if el is not None else ""
+
+def first_img_from_html(html):
+    import re
+    m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', html or "")
+    return m.group(1) if m else ""
+
+def parse_rss(root, source):
+    out = []
+    for item in root.iter("item"):
+        title = text(item.find("title"))
+        link = text(item.find("link"))
+        date = parse_date(text(item.find("pubDate")) or text(item.find("dc:date", NS)))
+        img = ""
+        for tag in ("media:content", "media:thumbnail"):
+            el = item.find(tag, NS)
+            if el is not None and el.get("url"):
+                img = el.get("url"); break
+        if not img:
+            enc = item.find("enclosure")
+            if enc is not None and (enc.get("type") or "").startswith("image"):
+                img = enc.get("url") or ""
+        if not img:
+            img = first_img_from_html(text(item.find("content:encoded", NS)) or text(item.find("description")))
+        if title and link:
+            out.append((title, link, date, img))
+    return out
+
+def parse_atom(root, source):
+    out = []
+    for e in root.findall("atom:entry", NS):
+        title = text(e.find("atom:title", NS))
+        link = ""
+        for l in e.findall("atom:link", NS):
+            if l.get("rel") in (None, "alternate"):
+                link = l.get("href") or ""; break
+        date = parse_date(text(e.find("atom:published", NS)) or text(e.find("atom:updated", NS)))
+        img = first_img_from_html(text(e.find("atom:content", NS)) or text(e.find("atom:summary", NS)))
+        if title and link:
+            out.append((title, link, date, img))
+    return out
+
+def main():
+    sources = json.load(open("sources.json"))
+    items, errors = [], []
+    for src in sources:
+        feed = src.get("feed")
+        if not feed:
+            continue
+        try:
+            raw = fetch(feed)
+            root = ET.fromstring(raw)
+            tag = root.tag.lower()
+            rows = parse_atom(root, src) if tag.endswith("feed") else parse_rss(root, src)
+            rows = rows[:PER_SOURCE_CAP]
+            for title, link, date, img in rows:
+                items.append({
+                    "title": title[:300],
+                    "url": link,
+                    "source": src["name"],
+                    "source_id": src["id"],
+                    "lang": src.get("lang", "en"),
+                    "image": img,
+                    "published": date.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if date else "",
+                })
+        except Exception as e:
+            errors.append(f"{src['id']}: {type(e).__name__} {e}")
+    # 重複除去（URL基準）→ 最新順 → 上限
+    seen, dedup = set(), []
+    for it in items:
+        k = hashlib.md5(it["url"].encode()).hexdigest()
+        if k in seen:
+            continue
+        seen.add(k); dedup.append(it)
+    dedup.sort(key=lambda x: x["published"] or "0000", reverse=True)
+    dedup = dedup[:MAX_ITEMS]
+    out = {
+        "version": int(time.time()),
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "sites": [
+            {"id": s["id"], "name": s["name"], "url": s["url"],
+             "lang": s.get("lang", "en"), "category": s.get("category", ""),
+             "has_feed": bool(s.get("feed"))}
+            for s in sources
+        ],
+        "items": dedup,
+    }
+    json.dump(out, open("external_feed.json", "w"), ensure_ascii=False, separators=(",", ":"))
+    print(f"items={len(dedup)} sources={len(sources)} errors={len(errors)}")
+    for e in errors:
+        print("WARN", e)
+
+if __name__ == "__main__":
+    main()
