@@ -1,1 +1,69 @@
-{"version":1,"entries":[{"id":"2026-07-09-v311","date":"2026-07-09","tag":"3.1.1","title":"中学生（U-15）ルールに対応","title_en":"U-15 ruleset added","items":["中学生（U-15）ルールに対応。演技構成ごとに一般／高校生／中学生を選べます。","「更新情報」を追加しました（このお知らせ）。","フィードバックの技追加でグループ・難度を入力できるように。","あん馬「マヌキャン」など技を追加。"],"items_en":["U-15 (middle-school) ruleset — choose Senior / High school / U-15 per routine.","New \"What's New\" section (this popup).","Skill-request feedback now includes group and difficulty fields.","Added skills incl. \"Manukyan\" on pommel horse."]},{"id":"2026-07-08-manukyan","date":"2026-07-08","tag":"NEW","title":"あん馬に技を追加","title_en":"New pommel horse skill","items":["あん馬「マヌキャン」（F・Ⅱ群）を追加しました。ご要望ありがとうございます！"],"items_en":["Added \"Manukyan\" (F, Group II) on pommel horse. Thanks for the request!"]},{"id":"2026-07-06-v310","date":"2026-07-06","tag":"3.1.0","title":"大型アップデート","title_en":"Big update","items":["年額プラン＋7日間無料トライアルを追加","クイズに「今日のチャレンジ」＋連続記録🔥","スコアの共有カードにQRコード","マイ構成の追加・コピーをわかりやすく改善"],"items_en":["New yearly plan + 7-day free trial","Daily Challenge and streaks in the quiz","QR code on score share cards","Clearer add/copy for My Routines"]}]}
+{
+  "version": 2,
+  "entries": [
+    {
+      "id": "2026-07-10-nejiribuse",
+      "date": "2026-07-10",
+      "tag": "技追加",
+      "title": "床「1回半捻り伏せ」を追加",
+      "title_en": "New floor skill added",
+      "items": [
+        "床（ゆか）に「1回半捻り伏せ」（グループⅠ・B難度）を追加しました。リクエストありがとうございました！"
+      ],
+      "items_en": [
+        "Added \"1½ twist to prone support\" on Floor (Group I, B). Thanks for the request!"
+      ]
+    },
+    {
+      "id": "2026-07-09-v311",
+      "date": "2026-07-09",
+      "tag": "3.1.1",
+      "title": "中学生（U-15）ルールに対応",
+      "title_en": "U-15 ruleset added",
+      "items": [
+        "中学生（U-15）ルールに対応。演技構成ごとに一般／高校生／中学生を選べます。",
+        "「更新情報」を追加しました（このお知らせ）。",
+        "フィードバックの技追加でグループ・難度を入力できるように。",
+        "あん馬「マヌキャン」など技を追加。"
+      ],
+      "items_en": [
+        "U-15 (middle-school) ruleset — choose Senior / High school / U-15 per routine.",
+        "New \"What's New\" section (this popup).",
+        "Skill-request feedback now includes group and difficulty fields.",
+        "Added skills incl. \"Manukyan\" on pommel horse."
+      ]
+    },
+    {
+      "id": "2026-07-08-manukyan",
+      "date": "2026-07-08",
+      "tag": "NEW",
+      "title": "あん馬に技を追加",
+      "title_en": "New pommel horse skill",
+      "items": [
+        "あん馬「マヌキャン」（F・Ⅱ群）を追加しました。ご要望ありがとうございます！"
+      ],
+      "items_en": [
+        "Added \"Manukyan\" (F, Group II) on pommel horse. Thanks for the request!"
+      ]
+    },
+    {
+      "id": "2026-07-06-v310",
+      "date": "2026-07-06",
+      "tag": "3.1.0",
+      "title": "大型アップデート",
+      "title_en": "Big update",
+      "items": [
+        "年額プラン＋7日間無料トライアルを追加",
+        "クイズに「今日のチャレンジ」＋連続記録🔥",
+        "スコアの共有カードにQRコード",
+        "マイ構成の追加・コピーをわかりやすく改善"
+      ],
+      "items_en": [
+        "New yearly plan + 7-day free trial",
+        "Daily Challenge and streaks in the quiz",
+        "QR code on score share cards",
+        "Clearer add/copy for My Routines"
+      ]
+    }
+  ]
+}
