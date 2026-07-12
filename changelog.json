@@ -1,6 +1,19 @@
 {
-  "version": 2,
+  "version": 3,
   "entries": [
+    {
+      "id": "2026-07-12-nejirifuse",
+      "date": "2026-07-12",
+      "tag": "技追加",
+      "title": "床に技を追加：捻り伏せ",
+      "title_en": "New floor skills added",
+      "items": [
+        "床（ゆか）に「1回捻り伏せ」「1回半捻り伏せ」を追加しました。リクエストありがとうございました！"
+      ],
+      "items_en": [
+        "Added \"1 twist to prone\" and \"1½ twist to prone\" on Floor. Thanks for the requests!"
+      ]
+    },
     {
       "id": "2026-07-10-nejiribuse",
       "date": "2026-07-10",
