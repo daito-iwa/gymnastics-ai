@@ -1,6 +1,23 @@
 {
-  "version": 3,
+  "version": 4,
   "entries": [
+    {
+      "id": "2026-07-13-v312",
+      "date": "2026-07-13",
+      "tag": "3.1.2",
+      "title": "3.1.2をリリースしました",
+      "title_en": "Version 3.1.2",
+      "items": [
+        "中学生（U-15）の床NDを修正：2回宙返りは演技内にあればOK（終末技でなくてよい）。",
+        "中学生の技数表示を7技（7/7）に修正。",
+        "禁止技を分かりやすく表示し、0点になる理由が分かるようにしました。"
+      ],
+      "items_en": [
+        "U-15 floor ND fixed: a double salto anywhere in the routine satisfies the requirement (need not be the dismount).",
+        "U-15 skill count now shows 7 (7/7).",
+        "Forbidden skills are now labeled so a 0 score is explained."
+      ]
+    },
     {
       "id": "2026-07-12-nejirifuse",
       "date": "2026-07-12",
