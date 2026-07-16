@@ -1,5 +1,5 @@
 # GymAI サーバー外形監視（15分ごと）。
-# 落ちたら: GitHub がメール通知 ＋ DISCORD_WEBHOOK シークレット設定時は Discord にも通知。
+# 落ちたら: GitHub がメール通知 ＋ DISCORD_WEBHOOK シークレット設定時は Discord にも通知（担当者メンション付き）。
 # 手動実行: Actions タブ → GymAI server health check → Run workflow
 name: GymAI server health check
 on:
@@ -25,12 +25,13 @@ jobs:
           done
           echo "::error::GymAI server unhealthy (health=$code, /ai/chat route missing or down)"
           exit 1
-      - name: Discord通知（失敗時のみ）
+      - name: Discord通知（失敗時のみ・担当者メンション）
         if: failure()
         env:
           HOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           [ -z "$HOOK" ] && { echo "DISCORD_WEBHOOK 未設定のためスキップ"; exit 0; }
           curl -s -X POST -H 'Content-Type: application/json' "$HOOK" -d "{
-            \"content\": \"🚨 **GymAIサーバー障害の可能性** — /health または /ai/chat が応答しません（3回リトライ失敗）。\\n詳細: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\\n復旧手順: gym リポジトリ server/README.md のランブック参照\"
+            \"content\": \"<@1290872557930549299> 🚨 **GymAIサーバー障害の可能性** — /health または /ai/chat が応答しません（3回リトライ失敗）。\\n詳細: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\\n復旧手順: gym リポジトリ server/README.md のランブック参照\",
+            \"allowed_mentions\": {\"users\": [\"1290872557930549299\"]}
           }"
