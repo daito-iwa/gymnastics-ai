@@ -1,0 +1,36 @@
+# GymAI サーバー外形監視（15分ごと）。
+# 落ちたら: GitHub がメール通知 ＋ DISCORD_WEBHOOK シークレット設定時は Discord にも通知。
+# 手動実行: Actions タブ → GymAI server health check → Run workflow
+name: GymAI server health check
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+permissions: {}
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: サーバー生存と /ai/chat ルートの確認（3回リトライ）
+        run: |
+          BASE=https://gymnasticsai.kubo.hexabase.io
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$BASE/health" || echo 000)
+            routes=$(curl -s --max-time 20 "$BASE/openapi.json" || true)
+            echo "attempt $i: health=$code"
+            if [ "$code" = "200" ] && echo "$routes" | grep -q '"/ai/chat"'; then
+              echo "OK"; exit 0
+            fi
+            sleep 20
+          done
+          echo "::error::GymAI server unhealthy (health=$code, /ai/chat route missing or down)"
+          exit 1
+      - name: Discord通知（失敗時のみ）
+        if: failure()
+        env:
+          HOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          [ -z "$HOOK" ] && { echo "DISCORD_WEBHOOK 未設定のためスキップ"; exit 0; }
+          curl -s -X POST -H 'Content-Type: application/json' "$HOOK" -d "{
+            \"content\": \"🚨 **GymAIサーバー障害の可能性** — /health または /ai/chat が応答しません（3回リトライ失敗）。\\n詳細: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\\n復旧手順: gym リポジトリ server/README.md のランブック参照\"
+          }"
