@@ -50,6 +50,36 @@ def first_img_from_html(html):
     m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', html or "")
     return m.group(1) if m else ""
 
+OG_TIMEOUT = 6  # 記事ページ取得のタイムアウト（秒）
+
+def og_image(url):
+    """記事ページの og:image（無ければ twitter:image）を返す。
+    多くのRSSは画像を含まないため、フィードで画像が取れない記事の補完に使う。
+    HTMLの<head>だけ読めば十分なので先頭200KBに制限。失敗時は空文字。"""
+    import re
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=OG_TIMEOUT) as r:
+            ctype = (r.headers.get("Content-Type") or "").lower()
+            if ctype and "html" not in ctype:
+                return ""  # 画像/PDF等のリンクはスキップ
+            html = r.read(200000).decode("utf-8", "ignore")
+    except Exception:
+        return ""
+    for pat in (
+        r'<meta[^>]+property=["\']og:image(?::url)?["\'][^>]+content=["\']([^"\']+)["\']',
+        r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image(?::url)?["\']',
+        r'<meta[^>]+name=["\']twitter:image(?::src)?["\'][^>]+content=["\']([^"\']+)["\']',
+    ):
+        m = re.search(pat, html, re.IGNORECASE)
+        if m:
+            src = m.group(1).strip()
+            if src.startswith("//"):
+                src = "https:" + src
+            if src.startswith("http"):
+                return src
+    return ""
+
 def parse_rss(root, source):
     out = []
     for item in root.iter("item"):
@@ -129,6 +159,16 @@ def main():
         seen.add(k); dedup.append(it)
     dedup.sort(key=lambda x: x["published"] or "0000", reverse=True)
     dedup = dedup[:MAX_ITEMS]
+    # 画像が無い記事は記事ページの og:image で補完（RSSに画像を含まないソース対策）。
+    og_filled = 0
+    for it in dedup:
+        if it["image"]:
+            continue
+        img = og_image(it["url"])
+        if img:
+            it["image"] = img
+            og_filled += 1
+    print(f"og_image filled={og_filled}")
     out = {
         "version": int(time.time()),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
