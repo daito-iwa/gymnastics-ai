@@ -1,6 +1,23 @@
 {
-  "version": 4,
+  "version": 5,
   "entries": [
+    {
+      "id": "2026-07-16-v320",
+      "date": "2026-07-16",
+      "tag": "3.2.0",
+      "title": "3.2.0をリリースしました",
+      "title_en": "Version 3.2.0",
+      "items": [
+        "採点規則の疑問に答えるAI「GymAI」を追加しました。根拠の条文つきで回答します。無料でお試し3回、以降はプレミアムで無制限（インターネット接続が必要）。",
+        "英語に完全対応しました。",
+        "回答と引用条文の表示をより読みやすく改善しました。"
+      ],
+      "items_en": [
+        "Added GymAI, an assistant for your men's Code of Points questions — with the exact rule cited. 3 free questions, then unlimited with Premium (internet connection required).",
+        "Full English support.",
+        "Clearer, more readable answers and citations."
+      ]
+    },
     {
       "id": "2026-07-13-v312",
       "date": "2026-07-13",
