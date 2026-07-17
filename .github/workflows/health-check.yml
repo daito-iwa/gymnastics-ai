@@ -1,5 +1,6 @@
 # GymAI サーバー外形監視（15分ごと）。
 # 落ちたら: GitHub がメール通知 ＋ DISCORD_WEBHOOK シークレット設定時は Discord にも通知（担当者メンション付き）。
+# 予算逼迫（月間トークン80%超）も Discord 警告（AI_ADMIN_KEY シークレット必要）。
 # 手動実行: Actions タブ → GymAI server health check → Run workflow
 name: GymAI server health check
 on:
@@ -35,3 +36,35 @@ jobs:
             \"content\": \"<@1290872557930549299> 🚨 **GymAIサーバー障害の可能性** — /health または /ai/chat が応答しません（3回リトライ失敗）。\\n詳細: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}\\n復旧手順: gym リポジトリ server/README.md のランブック参照\",
             \"allowed_mentions\": {\"users\": [\"1290872557930549299\"]}
           }"
+
+  budget:
+    # 月間トークン予算の逼迫を監視（health とは独立。障害でなく“財布の安全弁”の警告）。
+    runs-on: ubuntu-latest
+    steps:
+      - name: 月間トークン予算チェック（80%超で Discord 警告）
+        env:
+          ADMIN: ${{ secrets.AI_ADMIN_KEY }}
+          HOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          if [ -z "$ADMIN" ]; then
+            echo "AI_ADMIN_KEY 未設定のためスキップ（GitHub Secrets に登録すると有効化）"; exit 0
+          fi
+          BASE=https://gymnasticsai.kubo.hexabase.io
+          MONTH=$(date -u +%Y-%m)
+          JSON=$(curl -s --max-time 20 "$BASE/ai/stats" -H "X-Admin-Key: $ADMIN" || echo '{}')
+          PCT=$(echo "$JSON" | jq -r --arg m "$MONTH" '
+            (.budget_tokens // 0) as $b
+            | ([.months[]? | select(.month==$m) | (.tokens_in + .tokens_out)] | add // 0) as $u
+            | if $b > 0 then ($u * 100 / $b | floor) else 0 end' 2>/dev/null || echo 0)
+          case "$PCT" in ''|*[!0-9]*) PCT=0;; esac
+          echo "month=$MONTH budget_usage=${PCT}%"
+          if [ "$PCT" -ge 80 ]; then
+            if [ -z "$HOOK" ]; then
+              echo "::warning::GymAI 月間トークン予算 ${PCT}%（DISCORD_WEBHOOK 未設定で通知なし）"; exit 0
+            fi
+            curl -s -X POST -H 'Content-Type: application/json' "$HOOK" -d "{
+              \"content\": \"<@1290872557930549299> ⚠️ **GymAI 月間トークン予算 ${PCT}%** 到達（${MONTH}）。100%到達でユーザーが 503（service_budget）で締め出されます。\`/ai/stats\` を確認し、必要なら \`MONTHLY_TOKEN_BUDGET\` を引き上げてください。\",
+              \"allowed_mentions\": {\"users\": [\"1290872557930549299\"]}
+            }"
+            echo "Discord に予算警告を送信（${PCT}%）"
+          fi
