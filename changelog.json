@@ -2,6 +2,23 @@
   "version": 5,
   "entries": [
     {
+      "id": "2026-07-25-v321",
+      "date": "2026-07-25",
+      "tag": "3.2.1",
+      "title": "3.2.1をリリースしました",
+      "title_en": "Version 3.2.1 released",
+      "items": [
+        "GymAIの画面に、タップするだけで試せる質問例を追加しました",
+        "購入・復元まわりの安定性を改善（うまくいかない時の案内も分かりやすく）",
+        "細かな不具合の修正と改善"
+      ],
+      "items_en": [
+        "Added tappable sample questions on GymAI — try it in one tap",
+        "More reliable purchases and restores, with clearer guidance if something goes wrong",
+        "Minor fixes and improvements"
+      ]
+    },
+    {
       "id": "2026-07-16-v320",
       "date": "2026-07-16",
       "tag": "3.2.0",
