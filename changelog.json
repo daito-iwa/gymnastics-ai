@@ -2,6 +2,38 @@
   "version": 5,
   "entries": [
     {
+      "id": "2026-07-28-v323",
+      "date": "2026-07-28",
+      "tag": "3.2.3",
+      "title": "3.2.3をリリースしました",
+      "title_en": "Version 3.2.3 released",
+      "items": [
+        "「Dスコアが違う」などの報告時に、今の演技構成と計算内訳を添付できるようになりました（任意）",
+        "細かな改善と修正"
+      ],
+      "items_en": [
+        "When reporting a score that looks off, you can attach your current routine & score breakdown (optional)",
+        "Minor improvements and fixes"
+      ]
+    },
+    {
+      "id": "2026-07-25-v322",
+      "date": "2026-07-25",
+      "tag": "3.2.2",
+      "title": "3.2.2をリリースしました",
+      "title_en": "Version 3.2.2 released",
+      "items": [
+        "デイリー技クイズのリマインダー通知を追加（連続記録を続けやすく）",
+        "採点規則アシスタント「GymAI」を見つけやすく改善",
+        "細かな不具合の修正と表示改善"
+      ],
+      "items_en": [
+        "Added a daily quiz reminder so it's easier to keep your streak",
+        "Made GymAI (the Code of Points assistant) easier to find",
+        "Minor fixes and display refinements"
+      ]
+    },
+    {
       "id": "2026-07-25-v321",
       "date": "2026-07-25",
       "tag": "3.2.1",
