@@ -2,6 +2,19 @@
   "version": 5,
   "entries": [
     {
+      "id": "2026-08-01-zapata-fix",
+      "date": "2026-08-01",
+      "tag": "技修正",
+      "title": "床の技名の誤字を修正",
+      "title_en": "Fixed a floor skill name",
+      "items": [
+        "床「ザパタ」の表記の誤りを修正しました。ご報告ありがとうございます！"
+      ],
+      "items_en": [
+        "Corrected the spelling of the floor skill \"Zapata\". Thanks for reporting!"
+      ]
+    },
+    {
       "id": "2026-07-28-v323",
       "date": "2026-07-28",
       "tag": "3.2.3",
