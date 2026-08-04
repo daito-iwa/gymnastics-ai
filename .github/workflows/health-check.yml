@@ -68,3 +68,31 @@ jobs:
             }"
             echo "Discord に予算警告を送信（${PCT}%）"
           fi
+
+  billing:
+    # 課金の健全性監視。トライアル期限超過なのに trialing のまま滞留＝webhook取りこぼしの疑い。
+    runs-on: ubuntu-latest
+    steps:
+      - name: 課金health（stuck_trialing>0 で Discord警告）
+        env:
+          ADMIN: ${{ secrets.AI_ADMIN_KEY }}
+          HOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          if [ -z "$ADMIN" ]; then
+            echo "AI_ADMIN_KEY 未設定のためスキップ"; exit 0
+          fi
+          BASE=https://gymnasticsai.kubo.hexabase.io
+          JSON=$(curl -s --max-time 20 "$BASE/billing/stats" -H "X-Admin-Key: $ADMIN" || echo '{}')
+          STUCK=$(echo "$JSON" | jq -r '.stuck_trialing // 0' 2>/dev/null || echo 0)
+          case "$STUCK" in ''|*[!0-9]*) STUCK=0;; esac
+          echo "billing stats: $JSON"
+          if [ "$STUCK" -ge 1 ]; then
+            if [ -z "$HOOK" ]; then
+              echo "::warning::課金 stuck_trialing=${STUCK}（DISCORD_WEBHOOK未設定で通知なし）"; exit 0
+            fi
+            curl -s -X POST -H 'Content-Type: application/json' "$HOOK" -d "{
+              \"content\": \"<@1290872557930549299> ⚠️ **課金webhook取りこぼしの疑い** — trialingのまま期限超過が ${STUCK} 件（/billing/stats stuck_trialing）。Stripeのwebhook配信ログとサブスク実状態を確認してください。\",
+              \"allowed_mentions\": {\"users\": [\"1290872557930549299\"]}
+            }"
+            echo "Discordに課金警告を送信（stuck=${STUCK}）"
+          fi
