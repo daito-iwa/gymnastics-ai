@@ -1,6 +1,19 @@
 {
-  "version": 5,
+  "version": 6,
   "entries": [
+    {
+      "id": "2026-09-03-v326",
+      "date": "2026-09-03",
+      "tag": "3.2.6",
+      "title": "3.2.6をリリースしました",
+      "title_en": "Version 3.2.6 released",
+      "items": [
+        "細かな改善と安定性の向上"
+      ],
+      "items_en": [
+        "Minor improvements and stability fixes"
+      ]
+    },
     {
       "id": "2026-08-01-zapata-fix",
       "date": "2026-08-01",
