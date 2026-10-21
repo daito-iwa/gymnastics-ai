@@ -1,6 +1,21 @@
 {
-  "version": 6,
+  "version": 7,
   "entries": [
+    {
+      "id": "2026-10-10-v327",
+      "date": "2026-10-10",
+      "tag": "3.2.7",
+      "title": "3.2.7をリリースしました",
+      "title_en": "Version 3.2.7 released",
+      "items": [
+        "構成が完成したら、その場でカード画像にしてシェアできるようになりました（仲間やコーチとの確認に）",
+        "細かな改善と安定性の向上"
+      ],
+      "items_en": [
+        "Finish a routine and share it as a card image right away — handy for checking with teammates and coaches",
+        "Minor improvements and stability fixes"
+      ]
+    },
     {
       "id": "2026-09-03-v326",
       "date": "2026-09-03",
