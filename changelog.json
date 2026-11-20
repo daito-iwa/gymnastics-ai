@@ -1,6 +1,31 @@
 {
-  "version": 7,
+  "version": 8,
   "entries": [
+    {
+      "id": "2026-11-19-v330",
+      "date": "2026-11-19",
+      "tag": "3.3.0",
+      "title": "3.3.0をリリースしました",
+      "title_en": "Version 3.3.0 released",
+      "items": [
+        "女子の4種目（跳馬・段違い平行棒・平均台・ゆか）のDスコア計算に対応（ベータ版）。画面上部で男子／女子を切り替えられます",
+        "一覧にない技を「自作の技」として登録し、構成に入れられるように",
+        "GymAI が女子の規則にも対応。会話の流れをふまえて答え、表でも答えられるように。回答はコピーできます",
+        "技の一覧を難度の低い順に並べました",
+        "見た目を一新（ライトテーマを標準に。設定からダークにも切り替えられます）",
+        "跳馬の着地加点など、計算を採点規則どおりに見直し",
+        "技名・読み（かな検索）の誤りを修正"
+      ],
+      "items_en": [
+        "D-score calculation for all four women's events — Vault, Uneven Bars, Balance Beam and Floor (beta). Switch between Men and Women at the top of the screen",
+        "Add skills that aren't in the list as custom skills and use them in your routines",
+        "GymAI now covers the women's Code of Points, follows the flow of your conversation, can answer with tables, and lets you copy answers",
+        "Skill lists are now sorted from the lowest difficulty",
+        "A fresh new look, with a light theme by default (switch to dark in Settings)",
+        "Calculations reviewed against the Code of Points, including the stuck landing bonus on vault",
+        "Fixes to skill names and search"
+      ]
+    },
     {
       "id": "2026-10-10-v327",
       "date": "2026-10-10",
