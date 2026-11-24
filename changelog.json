@@ -1,6 +1,25 @@
 {
-  "version": 8,
+  "version": 9,
   "entries": [
+    {
+      "id": "2026-11-21-v331",
+      "date": "2026-11-21",
+      "tag": "3.3.1",
+      "title": "3.3.1をリリースしました",
+      "title_en": "Version 3.3.1 released",
+      "items": [
+        "結果画面で、ニュートラル減点の理由がわかるようになりました",
+        "女子の技の数の表示を「数えた技 / 8」にしました",
+        "届いた報告への回答をまとめた「フィードバックの対応状況」を追加しました（更新情報・設定から見られます）",
+        "英語表示の細かな修正"
+      ],
+      "items_en": [
+        "The results screen now shows the reason for any neutral deduction",
+        "The women's skill count now shows the counted skills out of 8",
+        "New \"Feedback & responses\" page with our answers to your reports (open it from What's New or Settings)",
+        "Minor fixes to the English text"
+      ]
+    },
     {
       "id": "2026-11-19-v330",
       "date": "2026-11-19",
